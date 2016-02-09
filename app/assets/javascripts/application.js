@@ -12,5 +12,39 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+
 //= require_tree .
+
+/*
+
+*/
+
+//show or hide div with adding new todo
+function hideToggle(newTodo, plus){
+	var newTodo = document.getElementById(newTodo);
+	var plus = document.getElementById(plus);
+	console.log(newTodo.style.visibility);
+	if (newTodo.style.visibility == 'visible' || newTodo.style.visibility == '') {
+		newTodo.display = 'none';
+		newTodo.style.visibility = 'hidden';
+		plus.display = 'inline-block';
+		plus.style.visibility = 'visible';
+	} else {
+		newTodo.display = 'inline-block';
+		newTodo.style.visibility = 'visible';
+
+		plus.display = 'none';
+		plus.style.visibility = 'hidden';
+	}
+	var value = document.getElementById("selId").value;
+	console.log(value);
+}
+
+//link instead button
+$(document).ready(function() {
+		$("#submitBtn").click(function(event) {
+		  event.preventDefault();
+		  $("#formId").submit();
+		});
+		//var hider2 = function() {$('#mynewTodo').hide();}
+});

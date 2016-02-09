@@ -1,0 +1,27 @@
+
+<!-- todos list grouped by projects -->
+<h1>Задачи</h1><br>
+<% @projects.each do |project| %>
+	<h2 style="font-size: 100%;"><%= project.title.mb_chars.upcase %></h2>
+	<ul>
+		<% project.todos.each do |todo|%>
+			<li><%= todo.text %><br></li>
+		<% end %><br>
+	</ul>
+<% end %>
+
+<!-- image-button for adding new todo -->
+<%= link_to(image_tag('addTodoIcon.png'), '#', :onclick => 'hideToggle("newTodo", "plus")' , :id => 'plus')%>
+
+<!-- adding new todo -->
+<div id="newTodo" style="visibility: hidden;">
+	<%= form_for ([@project, @project.todos.build]), :html => {:id => 'formId'} do |f| %>
+		<%= f.text_field :text %><br>
+		<%= select_tag "project_id_selected", options_from_collection_for_select(@projects, "id", "title"), :id => 'selId'%>
+		<%= f.label :title %><br>
+		<!-- hiding div -->
+		<%= link_to('ОТМЕНА', '#', :onclick => 'hideToggle("newTodo", "plus")' )%>
+		<!-- link instead button -->
+		<%= link_to('OK', '#', :id => 'submitBtn')%>
+	<% end %>
+</div>

@@ -1,0 +1,44 @@
+projects:
+ - title: 'Famil'
+   todos:
+    - text: 'Buy'
+      isCompleted: false
+    - text: 'Buy2'
+      isCompleted: false
+ - title: 'Work'
+   todos:
+    - text: 'Call'
+      isCompleted: true
+    - text: 'Send'
+      isCompleted: true
+	  
+	  
+{
+	"projects"=>[
+					{
+						"title"=>"Famil",
+						"todos"=>[
+									{
+										"text"=>"Buy",
+										"isCompleted"=>false
+									},
+									{
+										"text"=>"Buy2", 
+										"isCompleted"=>false
+									}
+								]
+					},
+					{
+						"title"=>"Work",
+						"todos"=>[
+									{
+										"text"=>"Call",
+										"isCompleted"=>true
+									},
+									{	"text"=>"Send",
+										"isCompleted"=>true
+									}
+								]
+					}
+				]
+}
