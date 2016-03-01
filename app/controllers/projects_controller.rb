@@ -1,15 +1,17 @@
 class ProjectsController < ApplicationController
   def index
-	@projects = Project.all
-	@project = Project.first
-
+  	@projects = Project.all
   end
 
   def update
+    @todo = Todo.find(params[:commit])
+    if @todo.update(isCompleted:params[:isCompleted])
+      @projects = Project.all
+      redirect_to :root
+    else
+      render plain: params[:isCompleted]
+    end
 
   end
 
-  def create
-
-  end
 end

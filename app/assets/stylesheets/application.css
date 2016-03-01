@@ -12,4 +12,159 @@
  *
  *= require_tree .
  *= require_self
+ *= require 'vendor/icheck/square/blue.css'
+ *= require 'vendor/select2.min.css'
  */
+ @font-face {
+   font-family: 'OpenSans-Light';
+   src: url('OpenSans-Light.ttf') format('truetype');
+   font-weight: normal;
+   font-style: normal;
+ }
+
+ @font-face {
+   font-family: 'OpenSans-Regular';
+   src: url('OpenSans-Regular.ttf') format('truetype');
+   font-weight: normal;
+   font-style: normal;
+ }
+
+ @font-face {
+   font-family: 'OpenSans-Semibold';
+   src: url('OpenSans-Semibold.ttf') format('truetype');
+   font-weight: normal;
+   font-style: normal;
+ }
+
+
+
+
+ /* Для синей строки*/
+ .header{
+    font-family: 'OpenSans-Light';
+    background-color: #4895D1;
+    color: white;
+    height:50px;
+ }
+
+ .elements{
+ height:inherit;
+ }
+
+ .header .elements h1.title {
+ display: inline;
+ margin-left:45%;
+ margin-top:10px;
+ font-family: 'OpenSans-Regular';
+ }
+
+ a#plus{
+   margin-right:2%;
+   margin-top: 10px;
+   float:right;
+ }
+
+ .shadow{
+    margin:10px;
+    -webkit-box-shadow: 0px 2px 1px 1px rgba(153,153,153,0.52);
+    -moz-box-shadow: 0px 2px 1px 1px rgba(153,153,153,0.52);
+    box-shadow: 0px 2px 1px 1px rgba(153,153,153,0.52);
+
+ }
+
+ h2{
+  font-size: 30px;
+  font-weight: 500px;
+  padding: 0.5em 0 0 0.5em;
+
+ }
+
+ .todo_item{
+  margin: 3em;
+ }
+
+ .todo_item_text{
+  display:inline;
+  margin-left: 1em;
+  font-weight: bold;
+
+ }
+
+ .checked_item{
+   text-decoration: line-through;
+ }
+
+/*new appearing window of creating todo----------------------*/
+ .cn {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color:rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+/*mini panel*/
+.inner {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 360px;
+  height: 245px;
+  background-color: white;
+  padding: 1em;
+}
+
+h3{
+  text-align: center;
+  margin:0;
+}
+
+/*input of name*/
+#todo_text{
+  width: 100%;
+  /*height: 2.5em;*/
+  height: 40px;
+  margin-bottom: 1em;
+}
+/*select list my*/
+.select2-container--default{
+  width: 100% !important;
+  /*height: 3em;*/
+  margin-bottom: 1em;
+}
+/*select list webnmobile*/
+.select2-selection, .select2-selection__rendered, .select2-selection__arrow {
+   height: 40px !important;
+   span {
+       line-height: 40px !important;
+       text-align: left;
+   }
+}
+/*select list webnmobile*/
+.select2-selection {
+   border-radius: 0 !important;
+}
+
+
+/*buttons*/
+#undo, #submitBtn{
+  background-color: rgb(128, 128, 128);;
+  color:white;
+  width: 49%;
+  display: inline-block;
+  float: left;
+  /*height: 2.5em;*/
+  height: 40px;
+  text-align: center;
+  padding-top:0.5em;
+}
+
+#submitBtn{
+  background-color: rgb(72, 149, 209);
+  float: right;
+}
+
+
+.submit_flag{
+  display:none;
+
+}

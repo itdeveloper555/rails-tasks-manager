@@ -1,0 +1,21 @@
+<div class="cn">
+
+  <div class="inner">
+
+    <h3>новая задача</h3>
+    <hr>
+
+    <!-- adding new todo -->
+    <div id="newTodo" style="visibility: hidden;">
+  	  <%= form_for ([@projects.first, @projects.first.todos.build]), :html => {:id => 'formId'} do |f| %>
+        <%= f.text_field :text, :placeholder => ' Название задачи...' %><br>
+    		<%= select_tag "project_id_selected", options_from_collection_for_select(@projects, "id", "title"), :id => 'selId', :class => 'js-example-basic-single', :style => 'style="width: 100%"'%><br>
+        <!-- hiding div -->
+    		<%= link_to('ОТМЕНА', '#', :onclick => 'hideToggle("newTodo", "plus")', :id => 'undo' )%>
+    		<!-- link instead button -->
+    		<%= link_to('OK', '#', :id => 'submitBtn')%>
+    	<% end %>
+    </div>
+  </div>
+
+</div>

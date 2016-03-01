@@ -14,7 +14,8 @@
 //= require jquery_ujs
 
 //= require_tree .
-
+//= require 'vendor/icheck/icheck'
+//= require 'vendor/select2.min.js'
 /*
 
 */
@@ -40,11 +41,73 @@ function hideToggle(newTodo, plus){
 	console.log(value);
 }
 
-//link instead button
+
+
 $(document).ready(function() {
+		//link instead button
 		$("#submitBtn").click(function(event) {
 		  event.preventDefault();
 		  $("#formId").submit();
 		});
-		//var hider2 = function() {$('#mynewTodo').hide();}
+
+		//pre set of icheck-ed fields
+		$('input').on('ifCreated', function(){
+			if ($(this).attr('value') == 'true') {
+				$(this).iCheck('check');
+				$('#item_'+$(this).attr('id')).addClass('checked_item');
+			}
+		});
+
+		//icheck general settings
+		$('input').iCheck({
+			checkboxClass: 'icheckbox_square-blue',
+			radioClass: 'iradio_square-blue',
+			increaseArea: '20%' // optional
+		});
+
+		//icheck line-through onclick to checkbox from icheck library
+		$('input').on('ifChecked', function(){
+			$('#item_'+$(this).attr('id')).addClass('checked_item');
+			//update page when checked
+			//$("#check_form").submit();
+		});
+		$('input').on('ifUnchecked', function(){
+			$('#item_'+$(this).attr('id')).removeClass('checked_item');
+			//update page when unchecked
+			//$("#check_form").submit();
+		});
+
+		//subnmit
+		$('input').on('ifClicked', function(event){
+		 var id = $(this).attr('id');
+		 var submit;
+		 var submits = document.getElementsByName('commit');
+		 for (var i=0;i<submits.length;i++){
+				 if (submits[i].getAttribute('id')==id){
+					 submit = submits[i];
+			 }
+		 }
+		 submit.click();
+		});
+
+
+		//hide window of creating todo
+		$('#creating_todo').hide();
+		$('#plus').click(function(){
+			$('#creating_todo').show();
+		});
+		$('#undo').click(function(){
+			$('#creating_todo').hide();
+		});
+
+		//select2 library
+		$(".js-example-basic-single").select2({
+			placeholder: "Категория",
+			clear: true,
+  		allowClear: true,
+			minimumResultsForSearch: Infinity
+
+
+		});
+
 });
