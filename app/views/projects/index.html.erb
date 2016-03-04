@@ -20,10 +20,10 @@
 </div>
 
 <!-- body with checkboxes -->
-<div class="container">
-	<div class="row">
+<div class="container2">
+	<div class="row2">
 		<% @projects.each do |project| %>
-			<div class=" col-lg-4 col-md-6 col-sm-12 col-xs-12">
+			<div class2=" col-lg-4 col-md-6 col-sm-12 col-xs-12">
 				<div class="shadow">
           <%= content_tag(:h2, project.title) %><hr>
 				  <% project.todos.sort.each do |todo|%>
