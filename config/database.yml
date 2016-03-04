@@ -26,9 +26,6 @@ development:
   database: postgres
   user: postgres
   password: 1
-  
-  
-  
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -63,18 +60,10 @@ development:
 test:
   <<: *default
   #database: site03_test
-  
-  #database: postgres
-  #user: postgres
-  #password: 1
+  database: postgres
+  user: postgres
+  password: 1
 
-  database: d8efmhsvq44et8
-  user: dscudgsixnwzpu
-  password: 6ExIdrREvI8M9kGV_4wRqBLDo4
-  port: 5432
-  DATABASE_URL="postgres://dscudgsixnwzpu:6ExIdrREvI8M9kGV_4wRqBLDo4@ec2-54-227-250-148.compute-1.amazonaws.com:5432/d8efmhsvq44et8"
-  url: <%= ENV['DATABASE_URL'] %>
-  
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
@@ -99,21 +88,6 @@ production:
   #database: site03_production
   #username: site03
   #password: <%= ENV['SITE03_DATABASE_PASSWORD'] %>
-  
-  #database: postgres
-  #user: postgres
-  #password: 1
-  
-  adapter: postgresql
-  host: localhost
-  username: user
-  database: app-dev
-  
-  
-  #database: d8efmhsvq44et8
-  #user: dscudgsixnwzpu
-  #password: 6ExIdrREvI8M9kGV_4wRqBLDo4
-  #port: 5432
-  #DATABASE_URL="postgres://dscudgsixnwzpu:6ExIdrREvI8M9kGV_4wRqBLDo4@ec2-54-227-250-148.compute-1.amazonaws.com:5432/d8efmhsvq44et8"
-  #url: <%= ENV['DATABASE_URL'] %>
-
+  database: postgres
+  user: postgres
+  password: 1
