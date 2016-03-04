@@ -1,21 +1,22 @@
 <div class="cn">
-
   <div class="inner">
-
-    <h3>новая задача</h3>
-    <hr>
-
+    <%= content_tag(:h3, "новая задача") %><hr>
     <!-- adding new todo -->
     <div id="newTodo" style="visibility: hidden;">
-  	  <%= form_for ([@projects.first, @projects.first.todos.build]), :html => {:id => 'formId'} do |f| %>
-        <%= f.text_field :text, :placeholder => ' Название задачи...' %><br>
-    		<%= select_tag "project_id_selected", options_from_collection_for_select(@projects, "id", "title"), :id => 'selId', :class => 'js-example-basic-single', :style => 'style="width: 100%"'%><br>
+      <%= form_tag("projects/1/todos", method:"post", id:"create_todo_form") do %>
+        <%= text_field(:todo, :text, :placeholder => ' Название задачи...') %><br>
+    		<%= select_tag("selected_project", options_from_collection_for_select(@projects, "id", "title"), :id => 'project_selection')%><br>
         <!-- hiding div -->
-    		<%= link_to('ОТМЕНА', '#', :onclick => 'hideToggle("newTodo", "plus")', :id => 'undo' )%>
+    		<%= link_to('ОТМЕНА', '#', :onclick => 'hideToggle("newTodo", "plus")', :id => 'undo_btn')%>
     		<!-- link instead button -->
-    		<%= link_to('OK', '#', :id => 'submitBtn')%>
+    		<%= link_to('OK', '#', :id => 'create_btn')%>
     	<% end %>
     </div>
   </div>
-
 </div>
+
+<!--
+form_tag({controller:"todos", action:"create"}, method:"post", id:"formId") do
+form_for ([@projects.first, @projects.first.todos.build]), :html => {:id => 'formId'} do |f|
+f.text_field :text, :placeholder => ' Название задачи...'
+-->

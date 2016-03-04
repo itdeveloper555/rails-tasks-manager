@@ -16,15 +16,11 @@
 //= require_tree .
 //= require 'vendor/icheck/icheck'
 //= require 'vendor/select2.min.js'
-/*
-
-*/
 
 //show or hide div with adding new todo
 function hideToggle(newTodo, plus){
 	var newTodo = document.getElementById(newTodo);
 	var plus = document.getElementById(plus);
-	console.log(newTodo.style.visibility);
 	if (newTodo.style.visibility == 'visible' || newTodo.style.visibility == '') {
 		newTodo.display = 'none';
 		newTodo.style.visibility = 'hidden';
@@ -37,48 +33,30 @@ function hideToggle(newTodo, plus){
 		plus.display = 'none';
 		plus.style.visibility = 'hidden';
 	}
-	var value = document.getElementById("selId").value;
-	console.log(value);
+
 }
 
 
 
 $(document).ready(function() {
-		//link instead button
-		$("#submitBtn").click(function(event) {
-		  event.preventDefault();
-		  $("#formId").submit();
-		});
+		
+		$("#create_btn").click(function() {$("#create_todo_form").submit();});//link instead button
 
 		//pre set of icheck-ed fields
 		$('input').on('ifCreated', function(){
 			if ($(this).attr('value') == 'true') {
 				$(this).iCheck('check');
-				$('#item_'+$(this).attr('id')).addClass('checked_item');
+				$('#todo_text_'+$(this).attr('id')).addClass('checked_item');
 			}
 		});
+		
+		$('input').iCheck({checkboxClass: 'icheckbox_square-blue', radioClass: 'iradio_square-blue', increaseArea: '20%' /*optional*/});//icheck general settings
 
-		//icheck general settings
-		$('input').iCheck({
-			checkboxClass: 'icheckbox_square-blue',
-			radioClass: 'iradio_square-blue',
-			increaseArea: '20%' // optional
-		});
-
-		//icheck line-through onclick to checkbox from icheck library
-		$('input').on('ifChecked', function(){
-			$('#item_'+$(this).attr('id')).addClass('checked_item');
-			//update page when checked
-			//$("#check_form").submit();
-		});
-		$('input').on('ifUnchecked', function(){
-			$('#item_'+$(this).attr('id')).removeClass('checked_item');
-			//update page when unchecked
-			//$("#check_form").submit();
-		});
+		$('input').on('ifChecked', function(){$('#todo_text_'+$(this).attr('id')).addClass('checked_item');});//icheck line-through
+		$('input').on('ifUnchecked', function(){$('#todo_text_'+$(this).attr('id')).removeClass('checked_item');});//icheck line-through
 
 		//subnmit
-		$('input').on('ifClicked', function(event){
+		$('input').on('ifClicked', function(){
 		 var id = $(this).attr('id');
 		 var submit;
 		 var submits = document.getElementsByName('commit');
@@ -89,25 +67,9 @@ $(document).ready(function() {
 		 }
 		 submit.click();
 		});
-
-
-		//hide window of creating todo
-		$('#creating_todo').hide();
-		$('#plus').click(function(){
-			$('#creating_todo').show();
-		});
-		$('#undo').click(function(){
-			$('#creating_todo').hide();
-		});
-
-		//select2 library
-		$(".js-example-basic-single").select2({
-			placeholder: "Категория",
-			clear: true,
-  		allowClear: true,
-			minimumResultsForSearch: Infinity
-
-
-		});
+		
+		$('#plus').click(function(){$('#cn').show();});//show window of creating todo
+		$('#undo_btn').click(function(){$('#cn').hide();});//hide window of creating todo
+		$("#project_selection").select2({placeholder: "Категория", clear: true, allowClear: true, minimumResultsForSearch: Infinity });//select2 library
 
 });
