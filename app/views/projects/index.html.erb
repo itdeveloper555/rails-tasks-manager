@@ -2,7 +2,7 @@
 <div id="cn" class="cn">
   <div class="inner">
     <%= content_tag(:h3, "новая задача") %><hr>
-    <%= form_tag("projects/1/todos", method:"post", id:"create_todo_form") do %>
+    <%= form_tag("projects/id/todos", method:"post", id:"create_todo_form") do %>
       <%= text_field(:todo, :text, :placeholder => ' Название задачи...',:class => 'todo_name_input') %><br>
       <%= select_tag("selected_project", options_from_collection_for_select(@projects, "id", "title"), :id => 'project_selection', :class => 'project_selection')%><br>
       <%= link_to('ОТМЕНА', '#', :id => 'undo_btn', :class => 'undo_btn')%><!-- hiding div -->
