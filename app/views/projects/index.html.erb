@@ -19,6 +19,12 @@
     </div>
 </div>
 
+<% @projects.each do |project| %>
+  <% project.todos.sort.each do |todo|%>
+    <%= todo.id %>
+  <% end %><br>
+<% end %><br>
+
 <!-- body with checkboxes -->
 <div class="container">
 	<div class="row">
