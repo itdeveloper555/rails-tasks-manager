@@ -1,37 +1,38 @@
-<!-- appearing window -->
+<!-- appearing window of adding new todo -->
 <div id="cn" class="cn">
   <div class="inner">
     <%= content_tag(:h3, "новая задача") %><hr>
     <%= form_tag("projects/1/todos", method:"post", id:"create_todo_form") do %>
-      <%= text_field(:todo, :text, :placeholder => ' Название задачи...') %><br>
+      <%= text_field(:todo, :text, :placeholder => ' Название задачи...',:class => 'todo_name_input') %><br>
       <%= select_tag("selected_project", options_from_collection_for_select(@projects, "id", "title"), :id => 'project_selection', :class => 'project_selection')%><br>
-      <%= link_to('ОТМЕНА', '#', :onclick => 'hideToggle("newTodo", "plus")', :id => 'undo_btn', :class => 'undo_btn')%><!-- hiding div -->
+      <%= link_to('ОТМЕНА', '#', :id => 'undo_btn', :class => 'undo_btn')%><!-- hiding div -->
       <%= link_to('OK', '#', :id => 'create_btn', :class => 'create_btn')%><!-- link instead button -->
     <% end %>
   </div>
 </div>
 
+<!-- header -->
 <div class = "header">
   <div class = "elements">
       <%= content_tag(:h1, :Задачи, class: "title") %>
-			<%= link_to(image_tag('addTodoIcon.png'), '#', :onclick => 'hideToggle("newTodo", "plus")' , :id => 'plus')%>
+			<%= link_to(image_tag('todoimages/addTodoIcon.png'), '#', :id => 'plus_btn', :class => 'plus_btn')%>
     </div>
 </div>
 
-<!-- body -->
+<!-- body with checkboxes -->
 <div class="container">
 	<div class="row">
 		<% @projects.each do |project| %>
 			<div class=" col-lg-4 col-md-6 col-sm-12 col-xs-12">
 				<div class="shadow">
           <%= content_tag(:h2, project.title) %><hr>
-				  <% project.todos.each do |todo|%>
+				  <% project.todos.sort.each do |todo|%>
             <div class="todo_item">
               <%= form_tag({controller:"projects", action:"update"}, method:"patch") do %>
-								<%= check_box_tag(todo.id,  todo.isCompleted)%>
+								<div class="check_wrapper"><%= check_box_tag(todo.id,  todo.isCompleted)%></div>
                 <%= hidden_field_tag(:isCompleted, !todo.isCompleted ) %>
-                <%= submit_tag(todo.id, class: "submit_flag", id: todo.id) %>
-                <%= content_tag(:div, todo.text, id:"todo_text_"+todo.id.to_s , class: "todo_text") %>
+                <%= submit_tag(todo.id, class: "submit_flag", id: "submit_flag_"+todo.id.to_s) %>
+                <%= content_tag(:label, todo.text, id:"todo_text_"+todo.id.to_s, class: "todo_text", for: todo.id) %>
 							<% end %>
             </div>
           <% end %><br>
